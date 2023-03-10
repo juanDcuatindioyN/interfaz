@@ -44,6 +44,7 @@ public class main extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         entrar = new javax.swing.JPanel();
         ENTRARL = new javax.swing.JLabel();
+        JUEGOS = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -68,7 +69,7 @@ public class main extends javax.swing.JFrame {
         X.setForeground(new java.awt.Color(255, 0, 0));
         X.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         X.setText("X");
-        X.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        X.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         X.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         X.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -97,7 +98,7 @@ public class main extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 430, 490));
 
-        USUARIOS.setBackground(new java.awt.Color(153, 0, 0));
+        USUARIOS.setBackground(new java.awt.Color(148, 0, 0));
 
         jLabel3.setBackground(new java.awt.Color(20, 20, 20));
         jLabel3.setFont(new java.awt.Font("Roboto Black", 1, 48)); // NOI18N
@@ -182,6 +183,25 @@ public class main extends javax.swing.JFrame {
             .addComponent(ENTRARL, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
         );
 
+        JUEGOS.setBackground(new java.awt.Color(204, 0, 0));
+        JUEGOS.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        JUEGOS.setText("JUEGOS ");
+        JUEGOS.setBorder(null);
+        JUEGOS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        JUEGOS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JUEGOSMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                JUEGOSMouseExited(evt);
+            }
+        });
+        JUEGOS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JUEGOSActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout USUARIOSLayout = new javax.swing.GroupLayout(USUARIOS);
         USUARIOS.setLayout(USUARIOSLayout);
         USUARIOSLayout.setHorizontalGroup(
@@ -201,7 +221,9 @@ public class main extends javax.swing.JFrame {
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 9, Short.MAX_VALUE))
                     .addGroup(USUARIOSLayout.createSequentialGroup()
-                        .addComponent(entrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(USUARIOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(entrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(JUEGOS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -227,7 +249,10 @@ public class main extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(USUARIOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(entrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(USUARIOSLayout.createSequentialGroup()
+                        .addComponent(entrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(JUEGOS, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
@@ -260,7 +285,7 @@ public class main extends javax.swing.JFrame {
     private void barraMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getXOnScreen();
-        this.setLocation(x - mouseX,y- mouseY);
+        this.setLocation(x - mouseX,y - mouseY);
     }//GEN-LAST:event_barraMouseDragged
 
     private void barraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraMousePressed
@@ -276,10 +301,6 @@ public class main extends javax.swing.JFrame {
         X.setBackground(Color.red);
     }//GEN-LAST:event_XMouseEntered
 
-    private void ENTRARLMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ENTRARLMouseEntered
-        entrar.setBackground(new Color(153,0,0));
-    }//GEN-LAST:event_ENTRARLMouseEntered
-
     private void usuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarioMousePressed
       if(usuario.getText().equals("ingrese su nombre de usuario")){
            usuario.setText("");
@@ -288,10 +309,6 @@ public class main extends javax.swing.JFrame {
           contraseña.setText("********");
       }
     }//GEN-LAST:event_usuarioMousePressed
-
-    private void ENTRARLMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ENTRARLMouseExited
-        entrar.setBackground(new Color(213,24,24));
-    }//GEN-LAST:event_ENTRARLMouseExited
 
     private void contraseñaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contraseñaMousePressed
         if (String.valueOf(contraseña.getPassword()).equals("********")){
@@ -302,9 +319,31 @@ public class main extends javax.swing.JFrame {
       }
     }//GEN-LAST:event_contraseñaMousePressed
 
+    private void ENTRARLMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ENTRARLMouseExited
+        entrar.setBackground(new Color(213,24,24));
+    }//GEN-LAST:event_ENTRARLMouseExited
+
+    private void ENTRARLMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ENTRARLMouseEntered
+        entrar.setBackground(new Color(153,0,0));
+    }//GEN-LAST:event_ENTRARLMouseEntered
+
     private void ENTRARLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ENTRARLMouseClicked
-    javax.swing.JOptionPane.showMessageDialog(this, "intento de login con los datos: \nUsuarios:"+ usuario.getText() + "\nContraseña:" + String.valueOf(contraseña.getPassword()),"login", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        javax.swing.JOptionPane.showMessageDialog(this, "intento de login con los datos: \nUsuarios:"+ usuario.getText() + "\nContraseña:" + String.valueOf(contraseña.getPassword()),"login", javax.swing.JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_ENTRARLMouseClicked
+
+    private void JUEGOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JUEGOSActionPerformed
+        interfaz2 n = new interfaz2();
+        n.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_JUEGOSActionPerformed
+
+    private void JUEGOSMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JUEGOSMouseExited
+       JUEGOS.setBackground(new Color(213,24,24));
+    }//GEN-LAST:event_JUEGOSMouseExited
+
+    private void JUEGOSMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JUEGOSMouseEntered
+       JUEGOS.setBackground(new Color(153,0,0));
+    }//GEN-LAST:event_JUEGOSMouseEntered
                                
     /**
      * @param args the command line arguments
@@ -344,6 +383,7 @@ public class main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel EMAIL;
     private javax.swing.JLabel ENTRARL;
+    private javax.swing.JButton JUEGOS;
     private javax.swing.JLabel SESION;
     private javax.swing.JPanel USUARIOS;
     private javax.swing.JLabel X;
